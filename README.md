@@ -9,21 +9,22 @@ Założenia projektu:
 
 •	Zalogowani użytkownicy mogą tworzyć wątki
 
-	Mogą usuwać wątki które stworzyli
+>	Mogą usuwać wątki które stworzyli
 
 
 •	Zalogowani użytkownicy mogą komentować wątki
 
-	Niestety miałem problem związany z relacjami więc po skomentowaniu nie wiadomo który użytkownik napisał komentarz jak i nie jest wstanie go usunąć za wyjątkiem administratorów.
+>	Niestety miałem problem związany z relacjami więc po skomentowaniu nie wiadomo który użytkownik napisał komentarz jak i nie jest wstanie go usunąć za wyjątkiem administratorów.
 
 
 •	Użytkownik z rangą administratora może:
 
-	Usuwać wątki innych użytkowników
+>	Usuwać wątki innych użytkowników
 
-	Usuwać komentarze
+>	Usuwać komentarze
 
-	Zakładać nowe subfora lub edytować/usuwać istniejące
+> Zakładać nowe subfora lub edytować/usuwać istniejące
+
 
 
 
