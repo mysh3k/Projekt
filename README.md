@@ -4,7 +4,7 @@ Założenia projektu:
 
 •	Możliwość zakładania konta i logowanie
 
-	Możliwość zmiany hasła
+>	Możliwość zmiany hasła
 
 
 •	Zalogowani użytkownicy mogą tworzyć wątki
