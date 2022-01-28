@@ -1,4 +1,5 @@
 „Forum”
+
 Założenia projektu:
 •	Możliwość zakładania konta i logowanie
 	Możliwość zmiany hasła
