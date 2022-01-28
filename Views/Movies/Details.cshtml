@@ -1,0 +1,39 @@
+﻿@using Microsoft.AspNetCore.Http;
+
+@model MvcMovie.Models.Movie
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>@Html.DisplayFor(model => model.Title)</h1>
+
+@{ 
+    IEnumerable<Post> posts = ViewData["Posts"] as IEnumerable<Post>;
+}
+
+<div>
+    <h4>@Html.DisplayFor(model => model.Description)</h4>
+    @if (@Context.Session.GetString("Permissions") == "True")
+    {
+        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+    }
+    <hr />
+    @foreach (Post post in posts)
+    {
+        <dl class="row">
+            <dt class="col-sm-2">
+                <a href="/Posts/Details/@post.Id">@post.Thread</a>
+            </dt>
+        </dl>}
+
+
+    <div class="form-group">
+        @if (Context.Session.GetString("Username") != null)
+        {
+            <a href="/Posts/Create/@Html.DisplayFor(model => model.Id)" class="btn btn-primary">Create</a>}
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Back</a>
+</div>

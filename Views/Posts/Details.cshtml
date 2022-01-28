@@ -1,0 +1,66 @@
+﻿@using Microsoft.AspNetCore.Http;
+
+@model MvcMovie.Models.Post
+
+@{
+    ViewData["Title"] = "Details";
+    var username = ViewData["Username"];
+}
+
+<h1>@Html.DisplayFor(model => model.Thread)</h1>
+@{ 
+    var uid = ViewData["UserID"];
+}
+
+@{
+    IEnumerable<Reply> replies = ViewData["Replies"] as IEnumerable<Reply>;
+}
+<div>
+    <h4>@Html.DisplayFor(model => model.Contents)</h4>
+    <h5>- @username</h5>
+    @if (@Context.Session.GetInt32("UserID").ToString() == uid.ToString() || @Context.Session.GetString("Permissions") == "True")
+    {
+        @using (Html.BeginForm("Delete", "Posts", FormMethod.Post, new { @class = "ui large form" }))
+        {
+            <input id="postid" name="postid" value="@Model.Id" hidden />
+            <button type="submit" class="btn btn-primary">Usuń post</button>
+        }
+
+    }
+    <hr />
+    @if (replies != null)
+    {
+        @foreach (Reply reply in replies)
+        {
+
+            <p>@reply.Contents</p>
+            <p>- Gal anonim</p>
+            @if (@Context.Session.GetString("Permissions") == "True")
+            {
+                @using (Html.BeginForm("Delete", "Replys", FormMethod.Post, new { @class = "ui large form" }))
+                {
+                    <input id="replyid" name="replyid" value="@reply.Id" hidden />
+                    <button type="submit">Usuń odpowiedź</button>
+                }
+            }
+
+            <hr />}}
+</div>
+<div>
+    @if(@Context.Session.GetString("Username") != null) { 
+    @using (Html.BeginForm("Create", "Replys", FormMethod.Post, new { @class = "ui large form" }))
+    {
+        <p>Your answer:</p>
+        <input id="postid" name="postid" value="@Model.Id" hidden />
+        <textarea id="replymsg" name="replymsg" rows="3" cols="50"></textarea>
+        <div class="form-group">
+            <input type="submit" value="Submit" class="btn btn-primary" />
+        </div>
+    }
+    }
+
+</div>
+
+<div>
+    <a href="/Movies/Details/@Model.MovieID/">Back</a>
+</div>
